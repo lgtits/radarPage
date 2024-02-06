@@ -556,7 +556,8 @@ function renderBlipDescription(blip, ring, quadrant, tip, groupBlipTooltipText) 
     var blipIdToFocus = blip.groupIdInGraph() ? blipWrapper.attr('data-group-id') : blipWrapper.attr('data-blip-id');
     var selectedBlipOnGraph = d3.select("g > a.blip-link[data-blip-id='".concat(blipIdToFocus, "'"));
     highlightBlipInGraph(blipIdToFocus);
-    highlightBlipInTable(blipTableItem);
+    // highlightBlipInTable(blipTableItem)
+
     var isQuadrantView = d3.select('svg#radar-plot').classed('quadrant-view');
     var displayToolTip = blip.isGroup() ? !isQuadrantView : !blip.groupIdInGraph();
     var toolTipText = blip.isGroup() ? groupBlipTooltipText : blip.name();
@@ -565,7 +566,12 @@ function renderBlipDescription(blip, ring, quadrant, tip, groupBlipTooltipText) 
       var selectedBlipCoords = selectedBlipOnGraph.node().getBoundingClientRect();
       var tipElement = d3.select('div.d3-tip');
       var tipElementCoords = tipElement.node().getBoundingClientRect();
-      tipElement.style('left', "".concat(parseInt(selectedBlipCoords.left + window.scrollX - tipElementCoords.width / 2 + selectedBlipCoords.width / 2), "px")).style('top', "".concat(parseInt(selectedBlipCoords.top + window.scrollY - tipElementCoords.height - 40), "px"));
+      console.log('xy: ', window.scrollX, window.scrollY, selectedBlipCoords.width, tipElementCoords.width, selectedBlipCoords.left);
+      var blipLeft = selectedBlipCoords.left;
+      var tipOffsetLeft = blipLeft > 350 ? tipElementCoords.width + 20 : -20;
+      var blipTop = selectedBlipCoords.top;
+      var tipOffsetTop = blipTop > 350 ? tipElementCoords.height : 0;
+      tipElement.style('left', "".concat(parseInt(blipLeft + window.scrollX - tipOffsetLeft + selectedBlipCoords.width / 2), "px")).style('top', "".concat(parseInt(selectedBlipCoords.top + window.scrollY - tipOffsetTop), "px"));
       //tip位置
     }
   };
@@ -81873,4 +81879,4 @@ Factory().build();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.decb3eca389760bcbf7f.js.map
+//# sourceMappingURL=main.31c3fa4088e22157a6ae.js.map
