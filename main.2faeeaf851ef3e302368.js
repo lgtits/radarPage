@@ -570,7 +570,7 @@ function renderBlipDescription(blip, ring, quadrant, tip, groupBlipTooltipText) 
       var blipLeft = selectedBlipCoords.left;
       var tipOffsetLeft = blipLeft > 350 ? tipElementCoords.width + 20 : -20;
       var blipTop = selectedBlipCoords.top;
-      var tipOffsetTop = blipTop > 350 ? tipElementCoords.height : 0;
+      var tipOffsetTop = blipTop > 350 ? tipElementCoords.height : -20 - selectedBlipCoords.width;
       tipElement.style('left', "".concat(parseInt(blipLeft + window.scrollX - tipOffsetLeft + selectedBlipCoords.width / 2), "px")).style('top', "".concat(parseInt(selectedBlipCoords.top + window.scrollY - tipOffsetTop), "px"));
       //tip位置
     }
@@ -81919,4 +81919,4 @@ Factory().build();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.759f253117a6994959fd.js.map
+//# sourceMappingURL=main.2faeeaf851ef3e302368.js.map
