@@ -81889,7 +81889,7 @@ module.exports = JSON.parse('{"radarData":"https://raw.githubusercontent.com/lgt
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/";
+/******/ 		__webpack_require__.p = "./";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -81919,4 +81919,4 @@ Factory().build();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.9c48a8e49f05152664bf.js.map
+//# sourceMappingURL=main.759f253117a6994959fd.js.map
