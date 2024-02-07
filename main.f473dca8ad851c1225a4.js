@@ -2334,13 +2334,31 @@ var plotRadarGraph = function plotRadarGraph(title, blips, currentRadarName, alt
   // console.log('before graphing: ', radar)
   new GraphingRadar(size, radar).init().plot();
 };
+var QueryParams = function QueryParams(queryString) {
+  var decode = function decode(s) {
+    return decodeURIComponent(s.replace(/\+/g, ' '));
+  };
+  var search = /([^&=]+)=?([^&]*)/g;
+  var queryParams = {};
+  var match;
+  while (match = search.exec(queryString)) {
+    queryParams[decode(match[1])] = decode(match[2]);
+  }
+  return queryParams;
+};
+function getDocumentOrSheetId() {
+  var _queryParams$document;
+  var queryParams = QueryParams(window.location.search.substring(1));
+  return (_queryParams$document = queryParams.documentId) !== null && _queryParams$document !== void 0 ? _queryParams$document : queryParams.sheetId;
+}
 var JSONFile = function JSONFile() {
   var self = {};
   // console.log('JSONFile')https://raw.githubusercontent.com/lgtits/mkup/main/src/assets/radar.json
-
+  var url = window.location.search.substring(1);
+  // console.log('url:', url)
   self.build = function () {
     // createBlips(JSONData);
-    d3.json(variables.radarData).then(determineRings).then(createBlips);
+    d3.json(url).then(determineRings).then(createBlips);
     // createBlips(jsonData)
     // .catch((exception) => {
     //   const fileNotFoundError = new FileNotFoundError(`Oops! We can't find the JSON file you've entered`)
@@ -81919,4 +81937,4 @@ Factory().build();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.2faeeaf851ef3e302368.js.map
+//# sourceMappingURL=main.f473dca8ad851c1225a4.js.map
