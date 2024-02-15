@@ -1204,12 +1204,11 @@ var quadrantGap = 30;
 //quadrant size
 
 // console.log('require: graphing config.js')/
-
 // const urlParams = new URLSearchParams(window.location.search);
 
 // const radarURL = urlParams.get('url');
 // const radarLang = urlParams.get('lang');
-
+// let radarLang = 'en'
 var getQuadrants = function getQuadrants() {
   return ['軟體靭體', '電子硬體', '通訊感測', '汽車產業'];
 };
@@ -1804,6 +1803,8 @@ var Radar = function Radar(size, radar) {
     var rings, quadrants, alternatives, currentSheet;
     rings = radar.rings();
     quadrants = radar.quadrants();
+    // console.warn('quadrants: ', quadrants[0].quadrant.name(), rings)
+    // console.warn('quadrants: ', quadrants, rings)
     // alternatives = radar.getAlternatives()
     // currentSheet = radar.getCurrentSheet()
 
@@ -1849,6 +1850,7 @@ var Radar = function Radar(size, radar) {
       var quadrantGroup;
       if (featureToggles.UIRefresh2022) {
         // 畫出象限
+        // console.warn('quadrants: ', quadrant, rings)
         quadrantGroup = renderRadarQuadrants(size, svg, quadrant, rings, ringCalculator, tip);
         plotLines(quadrantGroup, quadrant);
         var ringTextGroup = quadrantGroup.append('g');
@@ -2297,17 +2299,24 @@ function validateInputQuadrantOrRingName(allQuadrantsOrRings, quadrantOrRing) {
     return quadrantOrRing.toLowerCase() === formattedInputQuadrant;
   });
 }
+
+// radarLang === 'zh' ? ['軟體靭體', '電子硬體', '通訊感測', '汽車產業'] : ['Software & Firmware', 'Hardware', 'Communication & Sensor', 'Vehicle']
+// radarLang === 'zh' ? [ '週' , '一個月', '兩個月', '三個月'] : [ 'Week' , '1st Mth', '2nd Mth', '3rd Mth']
 var plotRadarGraph = function plotRadarGraph(title, blips, currentRadarName, alternativeRadars) {
   // document.title = '雷達圖標題'
   // console.log('plotRadarGraph')
 
   // console.log('取得ring')
-  var ringMap = graphConfig.rings.reduce(function (allRings, ring, index) {
+  var newRings = radarLang === 'zh' ? ['週', '一個月', '兩個月', '三個月'] : ['Week', '1st Mth', '2nd Mth', '3rd Mth'];
+  // graphConfig.rings > newRings
+  var ringMap = newRings.reduce(function (allRings, ring, index) {
     allRings[ring] = new Ring(ring, index);
     return allRings;
   }, {});
   // console.log('取得quadrants')
-  var quadrants = graphConfig.quadrants.reduce(function (allQuadrants, quadrant) {
+  // graphConfig.quadrants > newQuadrants
+  var newQuadrants = radarLang === 'zh' ? ['軟體靭體', '電子硬體', '通訊感測', '汽車產業'] : ['Software & Firmware', 'Hardware', 'Communication & Sensor', 'Vehicle'];
+  var quadrants = newQuadrants.reduce(function (allQuadrants, quadrant) {
     allQuadrants[quadrant] = new Quadrant(quadrant);
     return allQuadrants;
   }, {});
@@ -81935,7 +81944,7 @@ module.exports = JSON.parse('{"radarData":"https://raw.githubusercontent.com/lgt
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "./";
+/******/ 		__webpack_require__.p = "/";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -81965,4 +81974,4 @@ Factory().build();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.22a6a0eeb9b97fa3e378.js.map
+//# sourceMappingURL=main.8fad9e82f0eebdb2188f.js.map
