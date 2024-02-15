@@ -1205,6 +1205,11 @@ var quadrantGap = 30;
 
 // console.log('require: graphing config.js')/
 
+// const urlParams = new URLSearchParams(window.location.search);
+
+// const radarURL = urlParams.get('url');
+// const radarLang = urlParams.get('lang');
+
 var getQuadrants = function getQuadrants() {
   return ['軟體靭體', '電子硬體', '通訊感測', '汽車產業'];
 };
@@ -1410,9 +1415,11 @@ var Radar = function Radar(size, radar) {
       }
     });
   }
+
+  // 環名稱 6 > 10
   function plotRingNames(quadrantGroup, rings, quadrant) {
     rings.forEach(function (ring, i) {
-      var ringNameWithEllipsis = ring.name().length > 6 ? ring.name().slice(0, 6) + '...' : ring.name();
+      var ringNameWithEllipsis = ring.name().length > 10 ? ring.name().slice(0, 6) + '...' : ring.name();
       if (quadrant.order === 'third' || quadrant.order === 'fourth') {
         quadrantGroup.append('text').attr('class', 'line-text').attr('y', CENTER + 5).attr('x', CENTER + (ringCalculator.getRingRadius(i) + ringCalculator.getRingRadius(i + 1)) / 2).attr('text-anchor', 'middle').text(ringNameWithEllipsis);
       } else {
@@ -2279,6 +2286,9 @@ var ContentValidator = __webpack_require__(/*! ./contentValidator */ "./src/util
 var _require = __webpack_require__(/*! ../graphing/config */ "./src/graphing/config.js"),
   getGraphSize = _require.getGraphSize,
   graphConfig = _require.graphConfig;
+var urlParams = new URLSearchParams(window.location.search);
+var radarURL = urlParams.get('url');
+var radarLang = urlParams.get('lang');
 function validateInputQuadrantOrRingName(allQuadrantsOrRings, quadrantOrRing) {
   var quadrantOrRingNames = Object.keys(allQuadrantsOrRings);
   var regexToFixLanguagesAndFrameworks = /(-|\s+)(and)(-|\s+)|\s*(&)\s*/g;
@@ -2334,31 +2344,37 @@ var plotRadarGraph = function plotRadarGraph(title, blips, currentRadarName, alt
   // console.log('before graphing: ', radar)
   new GraphingRadar(size, radar).init().plot();
 };
-var QueryParams = function QueryParams(queryString) {
-  var decode = function decode(s) {
-    return decodeURIComponent(s.replace(/\+/g, ' '));
-  };
-  var search = /([^&=]+)=?([^&]*)/g;
-  var queryParams = {};
-  var match;
-  while (match = search.exec(queryString)) {
-    queryParams[decode(match[1])] = decode(match[2]);
-  }
-  return queryParams;
-};
-function getDocumentOrSheetId() {
-  var _queryParams$document;
-  var queryParams = QueryParams(window.location.search.substring(1));
-  return (_queryParams$document = queryParams.documentId) !== null && _queryParams$document !== void 0 ? _queryParams$document : queryParams.sheetId;
-}
+
+// const QueryParams = function (queryString) {
+//   var decode = function (s) {
+//     return decodeURIComponent(s.replace(/\+/g, ' '))
+//   }
+
+//   var search = /([^&=]+)=?([^&]*)/g
+
+//   var queryParams = {}
+//   var match
+//   while ((match = search.exec(queryString))) {
+//     queryParams[decode(match[1])] = decode(match[2])
+//   }
+
+//   return queryParams
+// }
+
+// function getDocumentOrSheetId() {
+//   const queryParams = QueryParams(window.location.search.substring(1))
+//   return queryParams.documentId ?? queryParams.sheetId
+// }
+
 var JSONFile = function JSONFile() {
   var self = {};
   // console.log('JSONFile')https://raw.githubusercontent.com/lgtits/mkup/main/src/assets/radar.json
   var url = window.location.search.substring(1);
-  // console.log('url:', url)
+
+  // console.log('url:', radarURL, radarLang)
   self.build = function () {
     // createBlips(JSONData);
-    d3.json(url).then(determineRings).then(createBlips);
+    d3.json(radarURL).then(determineRings).then(createBlips);
     // createBlips(jsonData)
     // .catch((exception) => {
     //   const fileNotFoundError = new FileNotFoundError(`Oops! We can't find the JSON file you've entered`)
@@ -2374,18 +2390,30 @@ var JSONFile = function JSONFile() {
       var timeDifference = now.getTime() - blipDate.getTime();
       var daysDifference = timeDifference / (1000 * 3600 * 24);
       // console.log('day: ', blipDate.getTime(), now.getTime(), daysDifference)
+
       if (daysDifference < 7) {
-        blip.ring = '週';
+        radarLang === 'zh' ? blip.ring = '週' : blip.ring = 'Week';
       } else if (daysDifference < 30) {
-        blip.ring = '一個月';
+        radarLang === 'zh' ? blip.ring = '一個月' : blip.ring = '1st Mth';
       } else if (daysDifference < 60) {
-        blip.ring = '兩個月';
+        radarLang === 'zh' ? blip.ring = '兩個月' : blip.ring = '2nd Mth';
       } else if (daysDifference < 90) {
-        blip.ring = '三個月';
+        radarLang === 'zh' ? blip.ring = '三個月' : blip.ring = '3rd Mth';
       } else {
         return false; // Remove entries beyond three months
       }
 
+      if (radarLang !== 'zh') {
+        if (blip.quadrant === '軟體靭體') {
+          blip.quadrant = 'Software & Firmware';
+        } else if (blip.quadrant === '電子硬體') {
+          blip.quadrant = 'Hardware';
+        } else if (blip.quadrant === '通訊感測') {
+          blip.quadrant = 'Communication & Sensor';
+        } else {
+          blip.quadrant = 'Vehicle';
+        }
+      }
       return true;
     });
     return filteredData;
@@ -81937,4 +81965,4 @@ Factory().build();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.f473dca8ad851c1225a4.js.map
+//# sourceMappingURL=main.22a6a0eeb9b97fa3e378.js.map
