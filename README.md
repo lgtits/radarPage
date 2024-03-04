@@ -18,6 +18,6 @@ https://lgtits.github.io/radarPage/?url=https://raw.githubusercontent.com/lgtits
 
 ## 設定檔
 
-在`assets/config.js`中設定 `BUILD_USE_LANGUAGE` 預設語言
+在`assets/config.json`中設定 `BUILD_USE_LANGUAGE` 預設語言
 
 
