@@ -2279,7 +2279,8 @@ module.exports = ExceptionMessages;
 
 /* eslint-disable no-unused-vars */
 /* eslint no-constant-condition: "off" */
-
+var testData = __webpack_require__(/*! ../../testData.json */ "./testData.json");
+var demoData = __webpack_require__(/*! ../../demoData.json */ "./demoData.json");
 var variables = __webpack_require__(/*! ../../config.js */ "./config.js");
 var defaultLang = variables.BUILD_USE_LANGUAGE;
 var d3 = __webpack_require__(/*! d3 */ "./node_modules/d3/src/index.js");
@@ -47168,6 +47169,17 @@ module.exports = styleTagTransform;
 
 /***/ }),
 
+/***/ "./demoData.json":
+/*!***********************!*\
+  !*** ./demoData.json ***!
+  \***********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "assets/demoData.json";
+
+/***/ }),
+
 /***/ "./src/images/arrow-icon.svg":
 /*!***********************************!*\
   !*** ./src/images/arrow-icon.svg ***!
@@ -47319,6 +47331,17 @@ module.exports = __webpack_require__.p + "assets/third-quadrant-btn-bg.svg";
 
 "use strict";
 module.exports = __webpack_require__.p + "assets/tw-logo.png";
+
+/***/ }),
+
+/***/ "./testData.json":
+/*!***********************!*\
+  !*** ./testData.json ***!
+  \***********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+module.exports = __webpack_require__.p + "assets/testData.json";
 
 /***/ }),
 
@@ -81796,7 +81819,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/";
+/******/ 		__webpack_require__.p = "./";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -81826,4 +81849,4 @@ Factory().build();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.8712767621024c555677.js.map
+//# sourceMappingURL=main.d05a5d45231b213d1bce.js.map

@@ -568,7 +568,7 @@ module.exports = __webpack_require__.p + "assets/tw-logo.png";
 /******/ 	
 /******/ 	/* webpack/runtime/publicPath */
 /******/ 	(() => {
-/******/ 		__webpack_require__.p = "/";
+/******/ 		__webpack_require__.p = "./";
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
@@ -604,4 +604,4 @@ __webpack_require__(/*! ./images/pdf_banner.png */ "./src/images/pdf_banner.png"
 
 /******/ })()
 ;
-//# sourceMappingURL=common.9c63c18f5d65bfb5e119.js.map
+//# sourceMappingURL=common.8740a9409b9eed3c3d1b.js.map
