@@ -8,7 +8,7 @@
 /***/ ((module) => {
 
 var variables = {
-  defaultLang: 'en' //可選 'zh', 'en', 'ja'
+  BUILD_USE_LANGUAGE: 'en' //可選 'zh', 'en', 'ja'
 };
 
 module.exports = variables;
@@ -2281,7 +2281,7 @@ module.exports = ExceptionMessages;
 /* eslint no-constant-condition: "off" */
 
 var variables = __webpack_require__(/*! ../../config.js */ "./config.js");
-var defaultLang = variables.defaultLang;
+var defaultLang = variables.BUILD_USE_LANGUAGE;
 var d3 = __webpack_require__(/*! d3 */ "./node_modules/d3/src/index.js");
 var _ = {
   map: __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js"),
@@ -81826,4 +81826,4 @@ Factory().build();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.0362ac5939e4234e353a.js.map
+//# sourceMappingURL=main.8712767621024c555677.js.map
