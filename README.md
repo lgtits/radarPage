@@ -10,11 +10,6 @@
 
 https://lgtits.github.io/radarPage/?url=https://raw.githubusercontent.com/lgtits/mkup/main/src/assets/radar.json&lang=jp
 
-## 設定檔
-
-在`/config.js`中設定 `BUILD_USE_LANGUAGE` 預設語言
-
-
 ## JSON 範例檔
 
 請參考 `assets` 資料夾中的範例檔：
