@@ -1,9 +1,9 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[4]!./src/stylesheets/base.scss":
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[4]!./src/stylesheets/base.scss":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[4]!./src/stylesheets/base.scss ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[4]!./src/stylesheets/base.scss ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -40,7 +40,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[4]!./base.scss */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[4]!./src/stylesheets/base.scss");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[4]!./base.scss */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[4]!./src/stylesheets/base.scss");
 
       
       
@@ -62,12 +62,12 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
 
 
 
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -352,7 +352,7 @@ module.exports = styleTagTransform;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/arrow-icon.svg";
+module.exports = __webpack_require__.p + "assets/arrow-icon.svg";
 
 /***/ }),
 
@@ -363,7 +363,7 @@ module.exports = __webpack_require__.p + "images/arrow-icon.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/arrow-white-icon.svg";
+module.exports = __webpack_require__.p + "assets/arrow-white-icon.svg";
 
 /***/ }),
 
@@ -374,7 +374,7 @@ module.exports = __webpack_require__.p + "images/arrow-white-icon.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/banner-image-desktop.jpg";
+module.exports = __webpack_require__.p + "assets/banner-image-desktop.jpg";
 
 /***/ }),
 
@@ -385,7 +385,7 @@ module.exports = __webpack_require__.p + "images/banner-image-desktop.jpg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/banner-image-mobile.jpg";
+module.exports = __webpack_require__.p + "assets/banner-image-mobile.jpg";
 
 /***/ }),
 
@@ -396,7 +396,7 @@ module.exports = __webpack_require__.p + "images/banner-image-mobile.jpg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/favicon.ico";
+module.exports = __webpack_require__.p + "assets/favicon.ico";
 
 /***/ }),
 
@@ -407,7 +407,7 @@ module.exports = __webpack_require__.p + "images/favicon.ico";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/first-quadrant-btn-bg.svg";
+module.exports = __webpack_require__.p + "assets/first-quadrant-btn-bg.svg";
 
 /***/ }),
 
@@ -418,7 +418,7 @@ module.exports = __webpack_require__.p + "images/first-quadrant-btn-bg.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/fourth-quadrant-btn-bg.svg";
+module.exports = __webpack_require__.p + "assets/fourth-quadrant-btn-bg.svg";
 
 /***/ }),
 
@@ -429,7 +429,7 @@ module.exports = __webpack_require__.p + "images/fourth-quadrant-btn-bg.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/pdf_banner.png";
+module.exports = __webpack_require__.p + "assets/pdf_banner.png";
 
 /***/ }),
 
@@ -440,7 +440,7 @@ module.exports = __webpack_require__.p + "images/pdf_banner.png";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/search-active-wave.svg";
+module.exports = __webpack_require__.p + "assets/search-active-wave.svg";
 
 /***/ }),
 
@@ -451,7 +451,7 @@ module.exports = __webpack_require__.p + "images/search-active-wave.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/search-logo-2x.svg";
+module.exports = __webpack_require__.p + "assets/search-logo-2x.svg";
 
 /***/ }),
 
@@ -462,7 +462,7 @@ module.exports = __webpack_require__.p + "images/search-logo-2x.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/second-quadrant-btn-bg.svg";
+module.exports = __webpack_require__.p + "assets/second-quadrant-btn-bg.svg";
 
 /***/ }),
 
@@ -473,7 +473,7 @@ module.exports = __webpack_require__.p + "images/second-quadrant-btn-bg.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/tech-radar-landing-page-wide.png";
+module.exports = __webpack_require__.p + "assets/tech-radar-landing-page-wide.png";
 
 /***/ }),
 
@@ -484,7 +484,7 @@ module.exports = __webpack_require__.p + "images/tech-radar-landing-page-wide.pn
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/third-quadrant-btn-bg.svg";
+module.exports = __webpack_require__.p + "assets/third-quadrant-btn-bg.svg";
 
 /***/ }),
 
@@ -495,7 +495,7 @@ module.exports = __webpack_require__.p + "images/third-quadrant-btn-bg.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/tw-logo.png";
+module.exports = __webpack_require__.p + "assets/tw-logo.png";
 
 /***/ })
 
@@ -604,4 +604,4 @@ __webpack_require__(/*! ./images/pdf_banner.png */ "./src/images/pdf_banner.png"
 
 /******/ })()
 ;
-//# sourceMappingURL=common.0b9aa851cbd58de9985d.js.map
+//# sourceMappingURL=common.9c63c18f5d65bfb5e119.js.map

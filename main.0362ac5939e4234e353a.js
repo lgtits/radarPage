@@ -1,6 +1,20 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./config.js":
+/*!*******************!*\
+  !*** ./config.js ***!
+  \*******************/
+/***/ ((module) => {
+
+var variables = {
+  defaultLang: 'en' //可選 'zh', 'en', 'ja'
+};
+
+module.exports = variables;
+
+/***/ }),
+
 /***/ "./src/common.js":
 /*!***********************!*\
   !*** ./src/common.js ***!
@@ -2265,7 +2279,9 @@ module.exports = ExceptionMessages;
 
 /* eslint-disable no-unused-vars */
 /* eslint no-constant-condition: "off" */
-var variables = __webpack_require__(/*! ../../variables.json */ "./variables.json");
+
+var variables = __webpack_require__(/*! ../../config.js */ "./config.js");
+var defaultLang = variables.defaultLang;
 var d3 = __webpack_require__(/*! d3 */ "./node_modules/d3/src/index.js");
 var _ = {
   map: __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js"),
@@ -2290,7 +2306,7 @@ var _require = __webpack_require__(/*! ../graphing/config */ "./src/graphing/con
   graphConfig = _require.graphConfig;
 var urlParams = new URLSearchParams(window.location.search);
 var radarURL = urlParams.get('url');
-var radarLang = urlParams.get('lang');
+var radarLang = urlParams.get('lang') ? urlParams.get('lang') : defaultLang;
 function validateInputQuadrantOrRingName(allQuadrantsOrRings, quadrantOrRing) {
   var quadrantOrRingNames = Object.keys(allQuadrantsOrRings);
   var regexToFixLanguagesAndFrameworks = /(-|\s+)(and)(-|\s+)|\s*(&)\s*/g;
@@ -2307,7 +2323,7 @@ var plotRadarGraph = function plotRadarGraph(title, blips, currentRadarName, alt
   // console.log('plotRadarGraph')
 
   // console.log('取得ring')
-  var newRings = radarLang === 'zh' ? ['週', '一個月', '兩個月', '三個月'] : radarLang === 'jp' ? ['週', '一ヶ月', '二ヶ月', '三ヶ月'] : ['Week', '1st Mth', '2nd Mth', '3rd Mth'];
+  var newRings = radarLang === 'zh' ? ['週', '一個月', '兩個月', '三個月'] : radarLang === 'ja' ? ['週', '一ヶ月', '二ヶ月', '三ヶ月'] : radarLang === 'en' ? ['Week', '1st Mth', '2nd Mth', '3rd Mth'] : ['Week', '1st Mth', '2nd Mth', '3rd Mth'];
   // graphConfig.rings > newRings
   var ringMap = newRings.reduce(function (allRings, ring, index) {
     allRings[ring] = new Ring(ring, index);
@@ -2315,7 +2331,7 @@ var plotRadarGraph = function plotRadarGraph(title, blips, currentRadarName, alt
   }, {});
   // console.log('取得quadrants')
   // graphConfig.quadrants > newQuadrants
-  var newQuadrants = radarLang === 'zh' ? ['軟體靭體', '電子硬體', '通訊感測', '汽車產業'] : radarLang === 'jp' ? ['ソフトウェアとファームウェア', 'ハードウェア', '通信とセンサー', '自動車産業'] : ['Software & Firmware', 'Hardware', 'Communication & Sensor', 'Vehicle'];
+  var newQuadrants = radarLang === 'zh' ? ['軟體靭體', '電子硬體', '通訊感測', '汽車產業'] : radarLang === 'ja' ? ['ソフトウェアとファームウェア', 'ハードウェア', '通信とセンサー', '自動車産業'] : radarLang === 'en' ? ['Software & Firmware', 'Hardware', 'Communication & Sensor', 'Vehicle'] : ['Software & Firmware', 'Hardware', 'Communication & Sensor', 'Vehicle'];
   var quadrants = newQuadrants.reduce(function (allQuadrants, quadrant) {
     allQuadrants[quadrant] = new Quadrant(quadrant);
     return allQuadrants;
@@ -2377,12 +2393,10 @@ var plotRadarGraph = function plotRadarGraph(title, blips, currentRadarName, alt
 
 var JSONFile = function JSONFile() {
   var self = {};
-  // console.log('JSONFile')https://raw.githubusercontent.com/lgtits/mkup/main/src/assets/radar.json
-  var url = window.location.search.substring(1);
-
+  // const url = window.location.search.substring(1)
   // console.log('url:', radarURL, radarLang)
+
   self.build = function () {
-    // createBlips(JSONData);
     d3.json(radarURL).then(determineRings).then(createBlips);
     // createBlips(jsonData)
     // .catch((exception) => {
@@ -2401,18 +2415,18 @@ var JSONFile = function JSONFile() {
       // console.log('day: ', blipDate.getTime(), now.getTime(), daysDifference)
 
       if (daysDifference < 7) {
-        radarLang === 'zh' ? blip.ring = '週' : radarLang === 'jp' ? blip.ring = '週' : blip.ring = 'Week';
+        radarLang === 'zh' ? blip.ring = '週' : radarLang === 'ja' ? blip.ring = '週' : radarLang === 'en' ? blip.ring = 'Week' : blip.ring = 'Week';
       } else if (daysDifference < 30) {
-        radarLang === 'zh' ? blip.ring = '一個月' : radarLang === 'jp' ? blip.ring = '一ヶ月' : blip.ring = '1st Mth';
+        radarLang === 'zh' ? blip.ring = '一個月' : radarLang === 'ja' ? blip.ring = '一ヶ月' : radarLang === 'en' ? blip.ring = '1st Mth' : blip.ring = '1st Mth';
       } else if (daysDifference < 60) {
-        radarLang === 'zh' ? blip.ring = '兩個月' : radarLang === 'jp' ? blip.ring = '二ヶ月' : blip.ring = '2nd Mth';
+        radarLang === 'zh' ? blip.ring = '兩個月' : radarLang === 'ja' ? blip.ring = '二ヶ月' : radarLang === 'en' ? blip.ring = '2nd Mth' : blip.ring = '2nd Mth';
       } else if (daysDifference < 90) {
-        radarLang === 'zh' ? blip.ring = '三個月' : radarLang === 'jp' ? blip.ring = '三ヶ月' : blip.ring = '3rd Mth';
+        radarLang === 'zh' ? blip.ring = '三個月' : radarLang === 'ja' ? blip.ring = '三ヶ月' : radarLang === 'en' ? blip.ring = '3rd Mth' : blip.ring = '3rd Mth';
       } else {
         return false; // Remove entries beyond three months
       }
 
-      if (radarLang === 'jp') {
+      if (radarLang === 'ja') {
         if (blip.quadrant === '軟體靭體') {
           blip.quadrant = 'ソフトウェアとファームウェア';
         } else if (blip.quadrant === '電子硬體') {
@@ -2423,7 +2437,31 @@ var JSONFile = function JSONFile() {
           blip.quadrant = '自動車産業';
         }
       }
-      if (radarLang !== 'zh' && radarLang !== 'jp') {
+
+      // if(radarLang === 'zh') {
+      //   if(blip.quadrant === '軟體靭體') {
+      //     blip.quadrant = 'Software & Firmware'
+      //   } else if (blip.quadrant === '電子硬體') {
+      //     blip.quadrant = 'Hardware'
+      //   } else if(blip.quadrant === '通訊感測'){
+      //     blip.quadrant = 'Communication & Sensor'
+      //   }else {
+      //     blip.quadrant = 'Vehicle'
+      //   }
+      // }
+
+      if (radarLang === 'en') {
+        if (blip.quadrant === '軟體靭體') {
+          blip.quadrant = 'Software & Firmware';
+        } else if (blip.quadrant === '電子硬體') {
+          blip.quadrant = 'Hardware';
+        } else if (blip.quadrant === '通訊感測') {
+          blip.quadrant = 'Communication & Sensor';
+        } else {
+          blip.quadrant = 'Vehicle';
+        }
+      }
+      if (radarLang !== 'zh' && radarLang !== 'en' && radarLang !== 'ja') {
         if (blip.quadrant === '軟體靭體') {
           blip.quadrant = 'Software & Firmware';
         } else if (blip.quadrant === '電子硬體') {
@@ -37375,9 +37413,9 @@ module.exports = upperFirst;
 
 /***/ }),
 
-/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[4]!./src/stylesheets/base.scss":
+/***/ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[4]!./src/stylesheets/base.scss":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[4]!./src/stylesheets/base.scss ***!
+  !*** ./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[4]!./src/stylesheets/base.scss ***!
   \****************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -46825,7 +46863,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[4]!./base.scss */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[4]!./src/stylesheets/base.scss");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[4]!./base.scss */ "./node_modules/mini-css-extract-plugin/dist/loader.js!./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[5].use[2]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[5].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[5].use[4]!./src/stylesheets/base.scss");
 
       
       
@@ -46847,12 +46885,12 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
 
 
 
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_4_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_4_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_4_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_mini_css_extract_plugin_dist_loader_js_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_5_use_2_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_5_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_5_use_4_base_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -47137,7 +47175,7 @@ module.exports = styleTagTransform;
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/arrow-icon.svg";
+module.exports = __webpack_require__.p + "assets/arrow-icon.svg";
 
 /***/ }),
 
@@ -47148,7 +47186,7 @@ module.exports = __webpack_require__.p + "images/arrow-icon.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/arrow-white-icon.svg";
+module.exports = __webpack_require__.p + "assets/arrow-white-icon.svg";
 
 /***/ }),
 
@@ -47159,7 +47197,7 @@ module.exports = __webpack_require__.p + "images/arrow-white-icon.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/banner-image-desktop.jpg";
+module.exports = __webpack_require__.p + "assets/banner-image-desktop.jpg";
 
 /***/ }),
 
@@ -47170,7 +47208,7 @@ module.exports = __webpack_require__.p + "images/banner-image-desktop.jpg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/banner-image-mobile.jpg";
+module.exports = __webpack_require__.p + "assets/banner-image-mobile.jpg";
 
 /***/ }),
 
@@ -47181,7 +47219,7 @@ module.exports = __webpack_require__.p + "images/banner-image-mobile.jpg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/favicon.ico";
+module.exports = __webpack_require__.p + "assets/favicon.ico";
 
 /***/ }),
 
@@ -47192,7 +47230,7 @@ module.exports = __webpack_require__.p + "images/favicon.ico";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/first-quadrant-btn-bg.svg";
+module.exports = __webpack_require__.p + "assets/first-quadrant-btn-bg.svg";
 
 /***/ }),
 
@@ -47203,7 +47241,7 @@ module.exports = __webpack_require__.p + "images/first-quadrant-btn-bg.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/fourth-quadrant-btn-bg.svg";
+module.exports = __webpack_require__.p + "assets/fourth-quadrant-btn-bg.svg";
 
 /***/ }),
 
@@ -47214,7 +47252,7 @@ module.exports = __webpack_require__.p + "images/fourth-quadrant-btn-bg.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/pdf_banner.png";
+module.exports = __webpack_require__.p + "assets/pdf_banner.png";
 
 /***/ }),
 
@@ -47225,7 +47263,7 @@ module.exports = __webpack_require__.p + "images/pdf_banner.png";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/search-active-wave.svg";
+module.exports = __webpack_require__.p + "assets/search-active-wave.svg";
 
 /***/ }),
 
@@ -47236,7 +47274,7 @@ module.exports = __webpack_require__.p + "images/search-active-wave.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/search-logo-2x.svg";
+module.exports = __webpack_require__.p + "assets/search-logo-2x.svg";
 
 /***/ }),
 
@@ -47247,7 +47285,7 @@ module.exports = __webpack_require__.p + "images/search-logo-2x.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/second-quadrant-btn-bg.svg";
+module.exports = __webpack_require__.p + "assets/second-quadrant-btn-bg.svg";
 
 /***/ }),
 
@@ -47258,7 +47296,7 @@ module.exports = __webpack_require__.p + "images/second-quadrant-btn-bg.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/tech-radar-landing-page-wide.png";
+module.exports = __webpack_require__.p + "assets/tech-radar-landing-page-wide.png";
 
 /***/ }),
 
@@ -47269,7 +47307,7 @@ module.exports = __webpack_require__.p + "images/tech-radar-landing-page-wide.pn
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/third-quadrant-btn-bg.svg";
+module.exports = __webpack_require__.p + "assets/third-quadrant-btn-bg.svg";
 
 /***/ }),
 
@@ -47280,7 +47318,7 @@ module.exports = __webpack_require__.p + "images/third-quadrant-btn-bg.svg";
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
-module.exports = __webpack_require__.p + "images/tw-logo.png";
+module.exports = __webpack_require__.p + "assets/tw-logo.png";
 
 /***/ }),
 
@@ -81663,17 +81701,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/***/ }),
-
-/***/ "./variables.json":
-/*!************************!*\
-  !*** ./variables.json ***!
-  \************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = JSON.parse('{"radarData":"https://raw.githubusercontent.com/lgtits/mkup/main/src/assets/radar.json"}');
-
 /***/ })
 
 /******/ 	});
@@ -81799,4 +81826,4 @@ Factory().build();
 
 /******/ })()
 ;
-//# sourceMappingURL=main.51a75da9716089bc757f.js.map
+//# sourceMappingURL=main.0362ac5939e4234e353a.js.map
